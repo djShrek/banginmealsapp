@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get "sign_in", to: "devise/sessions#new"
   end
 
+  get "get_meals", to: "application#get_meals"
+
   root to: "meals#index"
 
 end
