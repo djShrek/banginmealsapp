@@ -20,7 +20,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Bangin Meals</a>
+
+          <a class="navbar-brand" href="/">Bangin Meals</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,15 +43,15 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <div class="container-fluid">
-      <%= yield %>
-    </div>
-
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
+
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>

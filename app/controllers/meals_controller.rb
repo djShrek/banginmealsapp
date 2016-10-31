@@ -8,7 +8,6 @@ class MealsController < ApplicationController
   end
 
   def create
-    puts params
     @meal = Meal.new(name: params[:meal][:name], description: params[:meal][:description], 
                          price: params[:meal][:price], status: params[:meal][:status])
     if @meal.save
@@ -20,10 +19,33 @@ class MealsController < ApplicationController
     end
   end
 
+  def edit
+    @meal = Meal.find params[:id]
+  end
+
+  def update
+    @meal = Meal.find(params[:id])
+   
+    if @meal.update(meal_params)
+      redirect_to @meal
+    else
+      render 'edit'
+    end
+  end
+
   def show
     @meal = Meal.find params[:id]
   end
 
   def destroy
+    @meal = Meal.find params[:id]
+    @meal.destroy!
+    redirect_to meals_path
+  end
+
+  private
+
+  def meal_params
+    params.require(:meal).permit(:name, :description, :status, :price)
   end
 end

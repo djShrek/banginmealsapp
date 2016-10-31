@@ -1,20 +1,16 @@
-<div>
-  <div>
-    <h2>Name</h2>
-    <p>
-      <%= @meal.name %>
-    </p>
-  </div>
-  <div>
-    <h2>Description</h2>
-    <p>
-      <%= @meal.description %>
-    </p>
-  </div>
-  <div>
-    <h2>Price</h2>
-    <p>
-      <%= @meal.price %>
-    </p>
-  </div>
-</div>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Status</th>
+    <th>Edit</th>
+  </tr>
+  <tr>
+    <td><%= @meal.name %></td>
+    <td><%= @meal.description %></td>
+    <td><%= @meal.price %></td>
+    <td><%= @meal.status %></td>
+    <td>Edit</td>
+  </tr>
+</table>
