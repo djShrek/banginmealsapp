@@ -13,7 +13,16 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </p>
+  
+  <p>
+    <%= f.label :status %><br>
+    <%= f.check_box :status, { checked_value: "live", unchecked_value: "unavailable"}  %>
+  </p>
 
+  <p>
+    <%= select_tag(:type, options_for_select([["Clean Meal", "Clean Meal"], ["Normal Meal, Normal Meal"]])) %>
+  </p>
+  
  
   <p>
     <%= f.submit %>

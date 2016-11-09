@@ -1,0 +1,2 @@
+class SpecialtyMeal < Meal
+end

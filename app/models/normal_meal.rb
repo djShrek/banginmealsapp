@@ -1,0 +1,3 @@
+class NormalMeal < Meal
+
+end

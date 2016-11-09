@@ -1,4 +1,4 @@
-<h1>Editing article</h1>
+<h1>Editing Meal</h1>
  
 <%= form_for :meal, url: meal_path(@meal), method: :patch do |f| %>
  
@@ -29,6 +29,15 @@
   <p class="form-group">
     <%= f.label :price %><br>
     <%= f.text_field :price %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :active %><br>
+    <%= f.check_box :status, {}, "active", "inactive" %>
+  </p>
+
+  <p class="form-group">
+    <%= select(:meal, :type, [["Clean Meal", "CleanMeal"], ["Specialty Meal", "SpecialtyMeal"]]) %>
   </p>
 
   <p class="form-group">

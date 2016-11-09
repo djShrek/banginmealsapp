@@ -1,0 +1,3 @@
+class CleanMeal < Meal
+
+end

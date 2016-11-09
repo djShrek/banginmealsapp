@@ -28,9 +28,9 @@ class MealsController < ApplicationController
 
   def update
     @meal = Meal.find(params[:id])
-   
-    if @meal.update(meal_params)
-      redirect_to @meal
+    if @meal.update!(meal_params)
+      flash[:notice] = "Meal successfully updated"
+      redirect_to edit_meal_path(@meal)
     else
       render 'edit'
     end
@@ -49,6 +49,6 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :description, :status, :price)
+    params.require(:meal).permit(:name, :description, :status, :price, :type)
   end
 end
