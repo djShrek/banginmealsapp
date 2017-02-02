@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :admins
-
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   devise_scope :user do
     get "sign_in", to: "devise/sessions#new"
   end
@@ -12,5 +10,11 @@ Rails.application.routes.draw do
   root to: "admin#home"
 
   resources :meals
+
+
+  devise_for :admins
+  namespace :admin do
+    resources :meals
+  end
 
 end
