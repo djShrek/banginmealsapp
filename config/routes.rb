@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   get "get_meals", to: "application#get_meals"
 
-  root to: "meals#index"
+  root to: "admin#home"
 
 end
