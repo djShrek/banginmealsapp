@@ -1,0 +1,30 @@
+<%= form_for @meal, url: { action: "create" } do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </p>
+  
+  <p>
+    <%= f.label :status %><br>
+    <%= f.check_box :status, { checked_value: "live", unchecked_value: "unavailable"}  %>
+  </p>
+
+  <p>
+    <%= select_tag(:type, options_for_select([["Clean Meal", "CleanMeal"], ["Specialty Meal", "SpecialtyMeal"]])) %>
+  </p>
+  
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

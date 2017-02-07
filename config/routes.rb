@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
 
   devise_for :admins
+
   namespace :admin do
     resources :meals
+    resources :orders
   end
 
 end
