@@ -10,14 +10,14 @@ class Admin::MealsController < ApplicationController
   end
 
   def create
-    @meal = Meal.new(name: params[:meal][:name], description: params[:meal][:description], 
+    @meal = Meal.new(name: params[:meal][:name], description: params[:meal][:description],
                          price: params[:meal][:price], status: params[:meal][:status])
     if @meal.save
       flash[:notice] = "Meal successfully created"
       redirect_to @meal
     else
       flash[:alert] = "Uh oh something went wrong!"
-      redirect_to meals_path
+      redirect_to admin_meals_path
     end
   end
 
@@ -29,7 +29,7 @@ class Admin::MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     if @meal.update!(meal_params)
       flash[:notice] = "Meal successfully updated"
-      redirect_to edit_meal_path(@meal)
+      redirect_to edit_admin_meal_path(@meal)
     else
       render 'edit'
     end
@@ -42,12 +42,12 @@ class Admin::MealsController < ApplicationController
   def destroy
     @meal = Meal.find params[:id]
     @meal.destroy!
-    redirect_to meals_path
+    redirect_to admin_meals_path
   end
 
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :description, :status, :price, :type)
+    params.require(:meal).permit(:name, :description, :status, :price, :type, :image, { images: []} )
   end
 end
