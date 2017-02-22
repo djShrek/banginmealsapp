@@ -45,9 +45,17 @@ class Admin::MealsController < ApplicationController
     redirect_to admin_meals_path
   end
 
+  def delete_image
+    @meal = Meal.find params[:id]
+    remaining_images = @meal.images 
+    @meal.images.delete_at(params[:image_id].to_i) # delete target image
+    @meal.images = remaining_images
+    @meal.save!
+  end
+
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :description, :status, :price, :type, :image, { images: []} )
+    params.require(:meal).permit(:name, :description, :status, :price, :type, :image, :image_id, { images: [] })
   end
 end

@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   devise_for :admins
 
   namespace :admin do
-    resources :meals
+    resources :meals do
+      member do
+        delete "delete_image"
+      end
+    end
     resources :orders
   end
 
