@@ -2,6 +2,8 @@ class Meal < ApplicationRecord
 
   attr_accessor :image
 
+  has_many :order_meals
+
   mount_uploaders :images, ImageUploader
   
   scope :active_meals, -> { where(status: "active") }
@@ -11,7 +13,4 @@ class Meal < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
-  def remove_image(index)
-    
-  end
 end
