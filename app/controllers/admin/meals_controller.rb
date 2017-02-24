@@ -14,7 +14,7 @@ class Admin::MealsController < ApplicationController
                          price: params[:meal][:price], status: params[:meal][:status])
     if @meal.save
       flash[:notice] = "Meal successfully created"
-      redirect_to @meal
+      redirect_to admin_meal_path(@meal)
     else
       flash[:alert] = "Uh oh something went wrong!"
       redirect_to admin_meals_path
@@ -47,7 +47,7 @@ class Admin::MealsController < ApplicationController
 
   def delete_image
     @meal = Meal.find params[:id]
-    remaining_images = @meal.images 
+    remaining_images = @meal.images
     @meal.images.delete_at(params[:image_id].to_i) # delete target image
     @meal.images = remaining_images
     @meal.save!
