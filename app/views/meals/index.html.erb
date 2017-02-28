@@ -24,10 +24,10 @@
               <%= link_to m.name, meal_path(m) %>
             </div>
             <div>
-              Quick add
+              <%= button_to "Add To Cart", order_meals_path(meal_id: m) %>
             </div>
           </div>
-        <% end %>     
+        <% end %>
       </div>
     <% end %>
   <% end %>
