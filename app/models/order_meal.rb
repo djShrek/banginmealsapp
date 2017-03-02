@@ -20,4 +20,8 @@ class OrderMeal < ApplicationRecord
   # delete shopping cart
     # delete order meals unless order exists
 
+  def total_price
+    meal.price * quantity
+  end
+
 end

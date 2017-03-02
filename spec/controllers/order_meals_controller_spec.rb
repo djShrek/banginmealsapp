@@ -10,6 +10,11 @@ RSpec.describe OrderMealsController, type: :controller do
       expect(OrderMeal.count).to eq 1
     end
 
+    # it "updates line_item" do
+    #   patch :update, id: @order_meal, order_meal: { meal_id: meal.id }
+    #   expect to redirecto line_item path
+    # end
+
     # it "redirects to cart_path"
   end
 end

@@ -1,4 +1,25 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h2>Your cart</h2>
+
+<table class="carts">
+  <% @cart.order_meals.each do |order_meal| %>
+    <tr>
+      <td><%= order_meal.quantity %>&times;</td>
+      <td><%= order_meal.meal.name %></td>
+      <td class="item_price"><%= number_to_currency(order_meal&.total_price) %></td>
+    </tr>
+
+    <tr class="total_line">
+      <td colspan="2">Total</td>
+      <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= button_to "Empty Cart", @cart, method: :delete, data: { confirm: "Art you sure?" } %>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>

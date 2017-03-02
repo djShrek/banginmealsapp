@@ -6,11 +6,11 @@ class OrderMealsController < ApplicationController
 
   def create
     meal = Meal.find(params[:meal_id])
-    @order_meal = @cart.order_meals.build(meal: meal, quantity: 12)
+    @order_meal = @cart.add_meal(meal.id)
     respond_to do |format|
       if @order_meal.save
         format.html do
-          redirect_to @order_meal.cart, notice: "Order Meal was created."
+          redirect_to @order_meal.cart
         end
         format.json { render action: 'show', status: created, location: @order_meal }
       else
@@ -18,5 +18,9 @@ class OrderMealsController < ApplicationController
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def order_meals_params
+    params.require(:order_meal).permit(:meal_id)
   end
 end
