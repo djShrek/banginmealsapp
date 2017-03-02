@@ -1,5 +1,7 @@
 class MealsController < ApplicationController
-
+  include CurrentCart
+  before_action :set_cart
+  
   def index
     @meals = Meal.all
   end

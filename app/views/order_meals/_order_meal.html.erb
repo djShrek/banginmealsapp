@@ -1,0 +1,5 @@
+<tr>
+  <td><%= order_meal.quantity %>&times;</td>
+  <td><%= order_meal.meal.name %></td>
+  <td class="item_price"><%= number_to_currency(order_meal.total_price) %></td>
+</tr>

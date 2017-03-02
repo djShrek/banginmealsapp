@@ -1,0 +1,47 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div class="error_explanatation">
+      <h2><%= pluralize(@order.errors.count, "errpr") %> prohibited this
+      order from being saved:</h2>
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, size: 40 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.email_field :email, size: 40 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number, size: 40 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street %><br>
+    <%= f.text_field :street, rows: 3, cols: 40 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city, rows: 3, cols: 40 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zip_code %><br>
+    <%= f.text_field :zip_code, rows: 3, cols: 40 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Place order' %>
+  </div>
+<% end %>

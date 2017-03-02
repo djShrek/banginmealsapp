@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root to: "admin#home"
 
   resources :meals
+  resources :orders
   resources :order_meals
 
 
