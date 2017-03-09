@@ -1,5 +1,5 @@
 class Cart < ApplicationRecord
-  has_many :order_meals
+  has_many :order_meals, dependent: :destroy
 
   def add_meal(meal_id)
     current_order_meal = order_meals.find_by(meal_id: meal_id)
