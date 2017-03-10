@@ -1,7 +1,7 @@
 class OrderMeal < ApplicationRecord
-  belongs_to :order
-  belongs_to :meal
-  belongs_to :cart
+  belongs_to :order, optional: true
+  belongs_to :meal,  optional: true
+  belongs_to :cart,  optional: true
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 

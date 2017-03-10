@@ -14,7 +14,7 @@ class OrderMealsController < ApplicationController
         end
         format.json { render action: 'show', status: created, location: @order_meal }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to meals_path, alert: "There was an error" }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end

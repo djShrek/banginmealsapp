@@ -1,0 +1,9 @@
+Dear <%= @order.name %>
+
+THank you for your recent order from Banginmeals.
+
+You ordered the following items:
+
+<% @order.order_meals.each do |order_meal| %>
+  <%= order_meal.meal.name %>
+<% end %>

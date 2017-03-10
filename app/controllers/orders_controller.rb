@@ -6,14 +6,14 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.add_line_items_from_cart(@cart)
+    @order.add_order_meals_from_cart(@cart)
 
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-
-        format.html { redirect_to store_url, notice: "Thank you for your order" }
+        # OrderNotifierMailer.received(@order).deliver
+        format.html { redirect_to meals_path, notice: "Thank you for your order" }
         format.json { render action: "show", status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -32,5 +32,9 @@ class OrdersController < ApplicationController
   end
 
   def set_order
+  end
+
+  def order_params
+    params.require(:order).permit(:name, :email, :phone_number, :street, :city, :zip_code)
   end
 end
