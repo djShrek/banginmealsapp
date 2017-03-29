@@ -1,8 +1,7 @@
 <div class="container">
   <div class="login-wrapper">
-        <img class="login-logo"
-             src="https://banginmeals.github.io/banginmeals/img/logo.png"
-             alt="">
+        <img class="login-logo img-responsive"
+             src="https://banginmeals.github.io/banginmeals/img/logo.png">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email, required: false, autofocus: true %>

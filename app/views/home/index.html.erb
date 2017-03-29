@@ -1,1 +1,34 @@
-test
+<div class="container">
+  <% if @meals.present? %>
+    <% @meals.in_groups_of(3, false) do |meal| %>
+      <div class="row meal-group">
+        <% meal.each do |m| %>
+          <div class="col-xs-4">
+            <div class="meal_images">
+              <% if m.images.present? %>
+                <% m.images.each do |image| %>
+                  <%= image_tag image %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="meal_name">
+              Name: <%= m.name %>
+            </div>
+            <div class="meal_description">
+              Description: <%= m.description %>
+            </div>
+            <div class="meal_price">
+              Price: <%= m.price %>
+            </div>
+            <div>
+              <%= link_to m.name, meal_path(m) %>
+            </div>
+            <div>
+              <%= button_to "Add To Cart", order_meals_path(meal_id: m) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get "get_meals", to: "application#get_meals"
 
-  root to: "admin#home"
+  root to: "home#index"
 
   resources :meals
   resources :orders
